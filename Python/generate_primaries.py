@@ -14,11 +14,17 @@ def main():
                                       host=os.getenv('host'), database=os.getenv('database'))
         print("Successfully connected to " + os.getenv('database') + ".")
 
-        # Query of database test data
-        query = """SELECT * FROM test_data"""
-        test_df = pd.read_sql(query, cnx)
-        test_df = test_df.set_index('data_id')
-        print(test_df)
+        # Query of database employee data
+        query = """SELECT * FROM employees"""
+        employee_df = pd.read_sql(query, cnx)
+        employee_df = employee_df.set_index('employee_id')
+        print(employee_df)
+
+        # Query of database location data
+        query = """SELECT * FROM location_zips"""
+        location_df = pd.read_sql(query, cnx)
+        location_df = location_df.set_index('zip_code')
+        print(location_df)
         
         # Close database connection
         cnx.close()

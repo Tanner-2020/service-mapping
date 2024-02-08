@@ -33,6 +33,7 @@ CREATE TABLE `employees` (
   `last_name` varchar(32) NOT NULL,
   `phone_number` int(10) NOT NULL,
   `email_addr` varchar(32) NOT NULL
+  `isActive` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -56,11 +57,11 @@ CREATE TABLE `facility_locations` (
 
 CREATE TABLE `location_zips` (
   `zip_code` int(16) NOT NULL,
-  `city` int(32) NOT NULL,
-  `state` int(32) NOT NULL,
-  `county` int(32) NOT NULL,
-  `country` int(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `city` varchar(32) NOT NULL,
+  `state` varchar(32) NOT NULL,
+  `county` varchar(32) NOT NULL,
+  `country` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
