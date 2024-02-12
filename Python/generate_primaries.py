@@ -38,22 +38,24 @@ def main():
         facility_df = facility_df.set_index('facility_id')
         print(facility_df)
 
-        # Create combined table to find zip code primary service member
-        primary_df = pd.merge(service_df, facility_df, on="facility_id")
-        primary_df = pd.merge(primary_df, location_df, on='zip_code')
-        primary_df = pd.merge(primary_df, employee_df, on="employee_id")
-        primary_df = primary_df[primary_df['isActive'] == 1]
-        primary_df = primary_df[primary_df['zip_code'] == int(os.getenv('zip'))]
-        primary_df = primary_df.drop(['facility_name', 'facility_id', 'company', 'service_date', 'county', 'country', 'phone_number', 'email_addr', 'isActive','city','state'], axis=1)
-        primary_df = primary_df.groupby(['employee_id', 'zip_code'])['employee_id'].count().reset_index(name='count')
-        primary_df = primary_df.sort_values(['count', 'zip_code'], ascending=False)
-        primary_df = primary_df.iloc[:3]
-        print(primary_df)
+        for zip in range(55000, 57000):
+            # Create combined table to find zip code primary service member
+            primary_df = pd.merge(service_df, facility_df, on="facility_id")
+            primary_df = pd.merge(primary_df, location_df, on='zip_code')
+            primary_df = pd.merge(primary_df, employee_df, on="employee_id")
+            primary_df = primary_df[primary_df['isActive'] == 1]
+            primary_df = primary_df[primary_df['zip_code'] == zip]
+            primary_df = primary_df.drop(['facility_name', 'facility_id', 'company', 'service_date', 'county', 'country', 'phone_number', 'email_addr', 'isActive','city','state'], axis=1)
+            primary_df = primary_df.groupby(['employee_id', 'zip_code'])['employee_id'].count().reset_index(name='count')
+            primary_df = primary_df.sort_values(['count', 'zip_code'], ascending=False)
+            primary_df = primary_df.iloc[:3]
+            print(primary_df)
 
-        # Creates row for zip code and adds it to DataFrame.
-        data = [[primary_df.iloc[0][1], primary_df.iloc[0][0], primary_df.iloc[1][0], primary_df.iloc[2][0]]]
-        servicers_df = pd.DataFrame(data, columns=['zip_code', 'primary_serv', 'secondary_serv', 'tertiary_serv'])
-        print(servicers_df)
+            # Creates row for zip code and adds it to DataFrame.
+            if primary_df.shape[0] > 0:
+                data = [[primary_df.iloc[0][1], primary_df.iloc[0][0], primary_df.iloc[1][0], primary_df.iloc[2][0]]]
+                servicers_df = pd.DataFrame(data, columns=['zip_code', 'primary_serv', 'secondary_serv', 'tertiary_serv'])
+                print(servicers_df)
 
         # Close database connection
         cnx.close()
