@@ -45,9 +45,15 @@ def main():
         primary_df = primary_df[primary_df['isActive'] == 1]
         primary_df = primary_df[primary_df['zip_code'] == int(os.getenv('zip'))]
         primary_df = primary_df.drop(['facility_name', 'facility_id', 'company', 'service_date', 'county', 'country', 'phone_number', 'email_addr', 'isActive','city','state'], axis=1)
-        primary_df = primary_df.groupby(['first_name', 'last_name', 'zip_code'])['employee_id'].count().reset_index(name='count')
-        primary_df = primary_df.sort_values('count', ascending=False)
+        primary_df = primary_df.groupby(['employee_id', 'zip_code'])['employee_id'].count().reset_index(name='count')
+        primary_df = primary_df.sort_values(['count', 'zip_code'], ascending=False)
+        primary_df = primary_df.iloc[:3]
         print(primary_df)
+
+        # Creates row for zip code and adds it to DataFrame.
+        data = [[primary_df.iloc[0][1], primary_df.iloc[0][0], primary_df.iloc[1][0], primary_df.iloc[2][0]]]
+        servicers_df = pd.DataFrame(data, columns=['zip_code', 'primary_serv', 'secondary_serv', 'tertiary_serv'])
+        print(servicers_df)
 
         # Close database connection
         cnx.close()
