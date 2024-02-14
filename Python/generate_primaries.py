@@ -33,15 +33,7 @@ def main():
             primary_df = primary_df.iloc[:3]
 
             # Creates row for zip code and adds it to DataFrame.
-            data = [[zip,'','','']]
-            if primary_df.shape[0] == 3:
-                data = [[zip, primary_df.iloc[0][0], primary_df.iloc[1][0], primary_df.iloc[2][0]]]
-            elif primary_df.shape[0] == 2:
-                data = [[zip, primary_df.iloc[0][0], primary_df.iloc[1][0], 'none']]
-            elif primary_df.shape[0] == 1:
-                data = [[zip, primary_df.iloc[0][0], 'none', 'none']]
-            else:
-                data = [[zip, 'none', 'none', 'none']]
+            data = getTopServicers(zip, primary_df)
             servicers_df = pd.DataFrame(data, columns=['zip_code', 'primary_serv', 'secondary_serv', 'tertiary_serv'])
 
         # Close database connection
