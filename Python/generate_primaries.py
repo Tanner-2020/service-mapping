@@ -4,11 +4,14 @@ import mysql.connector
 import pandas as pd
 from dotenv import load_dotenv
 from data_processing import *
+from display_map import *
 
 def main():
 
     warnings.filterwarnings('ignore')
     load_dotenv()
+    df_data=[]
+
     try:
         # Connection to database
         cnx = mysql.connector.connect(user=os.getenv('user'), password=os.getenv('password'),
@@ -34,7 +37,14 @@ def main():
 
             # Creates row for zip code and adds it to DataFrame.
             data = getTopServicers(zip, primary_df)
-            servicers_df = pd.DataFrame(data, columns=['zip_code', 'primary_serv', 'secondary_serv', 'tertiary_serv'])
+            df_data.append(data)
+        
+        # Generates map
+        print(df_data)
+        servicers_df = pd.DataFrame(df_data, columns=['zip_code', 'primary_serv', 'secondary_serv', 'tertiary_serv'])
+        print(servicers_df.loc[44])
+        show_map(servicers_df)
+
 
         # Close database connection
         cnx.close()
