@@ -31,11 +31,11 @@ def getFacility(con):
 def getTopServicers(zip, primary_df):
     data = [zip,'','','']
     if primary_df.shape[0] == 3:
-        data = [zip, primary_df.iloc[0][0], primary_df.iloc[1][0], primary_df.iloc[2][0]]
+        data = [zip, primary_df.iloc[0][3] + ', ' + primary_df.iloc[0][2], primary_df.iloc[1][3] + ', ' + primary_df.iloc[1][3], primary_df.iloc[2][3] + ', ' + primary_df.iloc[2][2]]
     elif primary_df.shape[0] == 2:
-        data = [zip, primary_df.iloc[0][0], primary_df.iloc[1][0], 'none']
+        data = [zip, primary_df.iloc[0][3] + ', ' + primary_df.iloc[0][2], primary_df.iloc[1][3] + ', ' + primary_df.iloc[1][3], 'none']
     elif primary_df.shape[0] == 1:
-        data = [zip, primary_df.iloc[0][0], 'none', 'none']
+        data = [zip, primary_df.iloc[0][3] + ', ' + primary_df.iloc[0][2], 'none', 'none']
     else:
         data = [zip, 'none', 'none', 'none']
     return data

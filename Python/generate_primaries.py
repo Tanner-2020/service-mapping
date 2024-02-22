@@ -34,15 +34,16 @@ def main():
             primary_df = primary_df.groupby(['employee_id'])['employee_id'].count().reset_index(name='count')
             primary_df = primary_df.sort_values(['count'], ascending=False)
             primary_df = primary_df.iloc[:3]
+            primary_df = primary_df.merge(employee_df, on='employee_id')
+
 
             # Creates row for zip code and adds it to DataFrame.
             data = getTopServicers(zip, primary_df)
             df_data.append(data)
         
         # Generates map
-        print(df_data)
         servicers_df = pd.DataFrame(df_data, columns=['zip_code', 'primary_serv', 'secondary_serv', 'tertiary_serv'])
-        print(servicers_df.loc[44])
+        print('Servicer information collected.')
         show_map(servicers_df)
 
 
