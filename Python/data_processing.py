@@ -29,6 +29,7 @@ def getFacility(con):
     return facility_df
 
 def getTopServicers(zip, primary_df):
+    #  Returns list of the top 3 people for a given zip code
     data = [zip,'','','']
     if primary_df.shape[0] == 3:
         data = [zip, primary_df.iloc[0][3] + ', ' + primary_df.iloc[0][2], primary_df.iloc[1][3] + ', ' + primary_df.iloc[1][3], primary_df.iloc[2][3] + ', ' + primary_df.iloc[2][2]]
