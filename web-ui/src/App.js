@@ -1,5 +1,4 @@
 import Iframe from 'react-iframe'
-import logo from './logo.svg';
 import './App.css';
 import { searchModule } from './Search';
 
@@ -13,7 +12,6 @@ function App() {
             <Iframe src="" title="Map display"></Iframe>
           </div>
           <div id='Search-viewer'>
-            <p>Location Search</p>
             {searchModule()}
           </div>
         </div>

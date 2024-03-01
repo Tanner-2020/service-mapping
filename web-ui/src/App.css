@@ -33,7 +33,7 @@
 #Search-viewer {
   background-color: rgb(200, 200, 200);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   height: 80vh;
   width: 28vw;
   border-radius: 20px;
@@ -42,4 +42,21 @@
 Iframe {
   width: 65vw;
   height: 75vh;
+}
+
+#Search-text {
+  width: 25vw;
+  height: 5vh;
+  font-size: 0.67em;
+  margin-bottom: 1%;
+}
+
+#Search-header {
+  margin-bottom: 5%;
+}
+
+#Search-result {
+  margin-top: 2%;
+  display: flex;
+  padding-left: 1.5vw;
 }
