@@ -67,6 +67,18 @@ Iframe {
   width: 28vw;
   height: 58.4vh;
   overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+}
+
+.Result-item {
+  width: 90%;
+  background-color: #e0e0e0;
+  border-radius: 20px;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }

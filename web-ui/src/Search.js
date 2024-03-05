@@ -7,17 +7,17 @@ export function searchModule() {
                 <h6 id="Search-result">Results</h6>
             </div>
             <div id='Results'>
-                <div className="Search-result">
+                <div className="Result-item">
                     <h6>12345</h6>
                     <p>Area Zip Code</p>
                     <a>More Info</a>
                 </div>
-                <div className="Search-result">
+                <div className="Result-item">
                     <h6>City name</h6>
                     <p>City in zip code</p>
                     <a>More Info</a>
                 </div>
-                <div className="Search-result">
+                <div className="Result-item">
                     <h6>Location name</h6>
                     <p>Location address</p>
                     <a>More Info</a>
