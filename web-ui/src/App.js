@@ -9,7 +9,7 @@ function App() {
         <h1 id='Page-title'>Service Viewer</h1>
         <div className='Main-content'>
           <div id='Map-box'>
-            <Iframe src="" title="Map display"></Iframe>
+            <Iframe title="Map display"></Iframe>
           </div>
           <div id='Search-viewer'>
             {searchModule()}

@@ -9,18 +9,31 @@ export function searchModule() {
             <div id='Results'>
                 <div className="Result-item">
                     <h6>12345</h6>
-                    <p>Area Zip Code</p>
-                    <a>More Info</a>
+                    <a href="">More Info</a>
+                </div>
+                <div className="Result-item">
+                    <h6>12345</h6>
+                    <a href="">More Info</a>
                 </div>
                 <div className="Result-item">
                     <h6>City name</h6>
                     <p>City in zip code</p>
-                    <a>More Info</a>
+                    <a href="">More Info</a>
+                </div>
+                <div className="Result-item">
+                    <h6>City name</h6>
+                    <p>City in zip code</p>
+                    <a href="">More Info</a>
                 </div>
                 <div className="Result-item">
                     <h6>Location name</h6>
                     <p>Location address</p>
-                    <a>More Info</a>
+                    <a href="">More Info</a>
+                </div>
+                <div className="Result-item">
+                    <h6>Location name</h6>
+                    <p>Location address</p>
+                    <a href="">More Info</a>
                 </div>
             </div>
         </div>

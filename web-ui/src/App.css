@@ -37,11 +37,13 @@
   height: 80vh;
   width: 28vw;
   border-radius: 20px;
+  border: 1px solid rgb(200, 200, 200);
 }
 
 Iframe {
   width: 65vw;
   height: 75vh;
+  border-radius: 20px;
 }
 
 #Search-text {
@@ -66,9 +68,10 @@ Iframe {
   margin: 0%;
   width: 28vw;
   height: 58.4vh;
-  overflow: auto;
+  max-height: 58.4vh;
+  overflow: scroll;
   display: flex;
-  justify-content: center;
+  justify-content: baseline;
   align-items: center;
   flex-direction: column;
   border-bottom-left-radius: 20px;
@@ -79,6 +82,28 @@ Iframe {
   width: 90%;
   background-color: #e0e0e0;
   border-radius: 20px;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: baseline;
+  padding-left: 5%;
+}
+
+.Result-item h6 {
+  font-size: large;
   margin-top: 5%;
+  margin-bottom: 0%;
+}
+
+.Result-item a {
+  font-size: medium;
   margin-bottom: 5%;
+}
+
+.Result-item p {
+  font-size: medium;
+  margin-top: 0%;
+  margin-bottom: 0%;
 }
