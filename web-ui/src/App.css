@@ -25,6 +25,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   width: 68vw;
   height: 80vh;
   border-radius: 20px;
@@ -42,7 +43,7 @@
 
 Iframe {
   width: 65vw;
-  height: 75vh;
+  height: 68.5vh;
   border-radius: 20px;
 }
 
@@ -106,4 +107,20 @@ Iframe {
   font-size: medium;
   margin-top: 0%;
   margin-bottom: 0%;
+}
+
+#Map-button {
+  margin-top: 1.5vh;
+  background-color: #e0e0e0;
+  width: 50%;
+  height: 5vh;
+  border-radius: 20px;
+  text-decoration: none;
+  color: black;
+  transition: 0.5s;
+}
+
+#Map-button:hover {
+  background-color: #c0d9e0;
+  transition: 0.5s;
 }
