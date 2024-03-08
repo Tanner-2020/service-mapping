@@ -41,20 +41,37 @@ export function searchModule() {
 }
 
 
-function getSearchResults(text_value) {
+function getSearchResults() {
+    var test_value = 'temp';
+    console.log("Value: " + test_value);
+    console.log("Checking zip code database.");
+    var zip_res = getZipSearch(test_value);
+    console.log("Checking city database.");
+    var city_res = getCitySearch(test_value);
+    console.log("Checking facility database.");
+    var facility_res = getFacilitySearch(test_value);
+    console.log("Returning received values.");
+    console.log([zip_res, city_res, facility_res])
+    return [zip_res, city_res, facility_res]
 
 }
 
 function getZipSearch(zip_code) {
-
+    // TODO: Query database with following query: Select * from zip_codes left join servicer_data where zip_code contains zip_code
+    var data = ['Test', 'Values', 'Here'];
+    return data;
 }
 
 
 function getCitySearch(city_name) {
-
+    // TODO: Query database with following query: Select * from city left join servicer_data where zip_code contains zip_code
+    var data = ['Test', 'Values', 'Here'];
+    return data;
 }
 
 
 function getFacilitySearch(facility_name) {
-
+    // TODO: Query database with following query: Select * from facility left join servicer_data where zip_code contains zip_code
+    var data = ['Test', 'Values', 'Here'];
+    return data;
 }
