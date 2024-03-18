@@ -2,7 +2,7 @@ export function searchModule() {
     return (
         <div>
             <h3 id="Search-header">Location Search</h3>
-            <input type="text" id="Search-text" name="search-text" placeholder="Enter zip code, city, or service center" onChange={() => getSearchResults()}></input>
+            <input type="text" id="Search-text" name="search-text" placeholder="Enter zip code, city, or service center" onChange={(e) => getSearchResults(e.target.value)}></input>
             <div>
                 <h6 id="Search-result">Results</h6>
             </div>
@@ -13,7 +13,7 @@ export function searchModule() {
                 </div>
                 <div className="Result-item">
                     <h6>12345</h6>
-                    <a href="">More Info</a>
+                    <a href="">More Info</a> 
                 </div>
                 <div className="Result-item">
                     <h6>City name</h6>
@@ -41,8 +41,7 @@ export function searchModule() {
 }
 
 
-function getSearchResults() {
-    var test_value = 'temp';
+function getSearchResults(test_value) {
     console.log("Value: " + test_value);
     console.log("Checking zip code database.");
     var zip_res = getZipSearch(test_value);
