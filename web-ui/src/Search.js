@@ -1,4 +1,8 @@
+import { useState } from 'react';
+
 export function searchModule() {
+    const [searchResults, setSearchResults] = useState("");
+
     return (
         <div>
             <h3 id="Search-header">Location Search</h3>
@@ -7,34 +11,7 @@ export function searchModule() {
                 <h6 id="Search-result">Results</h6>
             </div>
             <div id='Results'>
-                <div className="Result-item">
-                    <h6>12345</h6>
-                    <a href="">More Info</a>
-                </div>
-                <div className="Result-item">
-                    <h6>12345</h6>
-                    <a href="">More Info</a> 
-                </div>
-                <div className="Result-item">
-                    <h6>City name</h6>
-                    <p>City in zip code</p>
-                    <a href="">More Info</a>
-                </div>
-                <div className="Result-item">
-                    <h6>City name</h6>
-                    <p>City in zip code</p>
-                    <a href="">More Info</a>
-                </div>
-                <div className="Result-item">
-                    <h6>Location name</h6>
-                    <p>Location address</p>
-                    <a href="">More Info</a>
-                </div>
-                <div className="Result-item">
-                    <h6>Location name</h6>
-                    <p>Location address</p>
-                    <a href="">More Info</a>
-                </div>
+                {searchResults}
             </div>
         </div>
     )
@@ -42,17 +19,13 @@ export function searchModule() {
 
 
 function getSearchResults(test_value) {
-    console.log("Value: " + test_value);
-    console.log("Checking zip code database.");
     var zip_res = getZipSearch(test_value);
-    console.log("Checking city database.");
     var city_res = getCitySearch(test_value);
-    console.log("Checking facility database.");
     var facility_res = getFacilitySearch(test_value);
-    console.log("Returning received values.");
-    console.log([zip_res, city_res, facility_res])
-    return [zip_res, city_res, facility_res]
+    var search_res = [zip_res, city_res, facility_res];
 
+    // TODO: Create function to erase and append results to cells in result list.
+    getSearchResults(search_res);
 }
 
 function getZipSearch(zip_code) {
