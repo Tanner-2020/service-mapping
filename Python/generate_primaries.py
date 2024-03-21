@@ -5,6 +5,9 @@ import pandas as pd
 from dotenv import load_dotenv
 from data_processing import *
 from display_map import *
+import sqlalchemy
+from sqlalchemy import create_engine
+import pymysql
 
 def main():
 
@@ -40,16 +43,20 @@ def main():
             # Creates row for zip code and adds it to DataFrame.
             data = getTopServicers(zip, primary_df)
             df_data.append(data)
-        
+
         # Generates map
         servicers_df = pd.DataFrame(df_data, columns=['zip_code', 'primary_serv', 'secondary_serv', 'tertiary_serv'])
         print('Servicer information collected.')
-        show_map(servicers_df)
+        # show_map(servicers_df)
 
+        conn_str = 'mysql+pymysql://'+os.getenv('user')+':'+os.getenv('password')+'@'+os.getenv('host')+'/'+os.getenv('database')
+        engine = create_engine(conn_str)
+        servicers_df.to_sql('servicer_rankings', engine, index=False, if_exists='replace')
 
-        # Close database connection
+        # Close database connections
+        engine.dispose()
         cnx.close()
-        print("Successfully closed database connection to " + os.getenv('database') + ".")
+        print("Successfully closed database connections to " + os.getenv('database') + ".")
     except Exception as e:
         print("Error: " + e)
 
