@@ -1,6 +1,7 @@
 import express from 'express';
 import mysql from "mysql";
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
@@ -12,6 +13,9 @@ const db = mysql.createConnection({
     database: process.env.DATABASE
 })
 
+app.use(express.json())
+app.use(cors())
+
 app.get("/", (req, res) => {
     const q = "SELECT * FROM servicer_rankings"
     db.query(q, (err, data) => {
@@ -20,6 +24,6 @@ app.get("/", (req, res) => {
     })
 })
 
-app.listen(3000, () => {
+app.listen(process.env.LISTEN, () => {
     console.log("Connected to the backend.")
 })

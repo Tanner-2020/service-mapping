@@ -1,4 +1,4 @@
-export function searchModule() {
+export function searchModule(servicers) {
 
     return (
         <div>
@@ -8,7 +8,14 @@ export function searchModule() {
                 <h6 id="Search-result">Results</h6>
             </div>
             <div id='Results'>
-                
+                {servicers.map(zip=>(
+                    <div className='Search-item' key={zip.zip_code}>
+                        <p>{zip.zip_code}</p>
+                        <p>{zip.primary_serv}</p>
+                        <p>{zip.secondary_serv}</p>
+                        <p>{zip.tertiary_serv}</p>
+                    </div>
+                ))}
             </div>
         </div>
     )
@@ -22,7 +29,6 @@ function getSearchResults(test_value) {
     var search_res = [zip_res, city_res, facility_res];
 
     // TODO: Create function to erase and append results to cells in result list.
-    getSearchResults(search_res);
 }
 
 function getZipSearch(zip_code) {
