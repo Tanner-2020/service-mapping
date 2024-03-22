@@ -1,7 +1,4 @@
-import { useState } from 'react';
-
 export function searchModule() {
-    const [searchResults, setSearchResults] = useState("");
 
     return (
         <div>
@@ -11,7 +8,7 @@ export function searchModule() {
                 <h6 id="Search-result">Results</h6>
             </div>
             <div id='Results'>
-                {searchResults}
+                
             </div>
         </div>
     )

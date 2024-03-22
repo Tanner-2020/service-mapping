@@ -13,17 +13,13 @@ const db = mysql.createConnection({
 })
 
 app.get("/", (req, res) => {
-    res.json("Hello, this is the backend.")
-})
-
-app.get("/employees", (req, res) => {
-    const q = "SELECT * FROM employees"
+    const q = "SELECT * FROM servicer_rankings"
     db.query(q, (err, data) => {
         if(err) return res.json(err)
         return res.json(data)
     })
 })
 
-app.listen(8800, () => {
+app.listen(3000, () => {
     console.log("Connected to the backend.")
 })
