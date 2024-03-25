@@ -9,11 +9,12 @@ export function searchModule(servicers) {
             </div>
             <div id='Results'>
                 {servicers.map(zip=>(
-                    <div className='Search-item' key={zip.zip_code}>
-                        <p>{zip.zip_code}</p>
-                        <p>{zip.primary_serv}</p>
-                        <p>{zip.secondary_serv}</p>
-                        <p>{zip.tertiary_serv}</p>
+                    <div className='Result-item' key={zip.zip_code}>
+                        <h6 className='Headline'>{zip.zip_code}</h6>
+                        <p className='Primary'><b>Primary:</b> {zip.primary_serv}</p>
+                        <p className='Secondary'><b>Secondary:</b> {zip.secondary_serv}</p>
+                        <p className='Tertiary'><b>Tertiary:</b> {zip.tertiary_serv}</p>
+                        <a className='DataToggle'>Show More</a>
                     </div>
                 ))}
             </div>

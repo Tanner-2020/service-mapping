@@ -93,20 +93,26 @@ Iframe {
 }
 
 .Result-item h6 {
-  font-size: large;
+  font-size: 85%;
   margin-top: 5%;
+  margin-bottom: 2%;
+}
+
+.Result-item p {
+  font-size: large;
+  margin-top: 0%;
   margin-bottom: 0%;
 }
 
 .Result-item a {
-  font-size: medium;
+  margin-top: 2%;
   margin-bottom: 5%;
+  font-size: medium;
+  font-weight: light;
 }
 
-.Result-item p {
-  font-size: medium;
-  margin-top: 0%;
-  margin-bottom: 0%;
+.Secondary, .Tertiary{
+  visibility: collapse;
 }
 
 #Map-button {
