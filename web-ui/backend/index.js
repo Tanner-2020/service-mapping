@@ -16,7 +16,7 @@ const db = mysql.createConnection({
 app.use(express.json())
 app.use(cors())
 
-app.get("/", (req, res) => {
+app.get("/zip", (req, res) => {
     const q = "SELECT * FROM servicer_rankings"
     db.query(q, (err, data) => {
         if(err) return res.json(err)
