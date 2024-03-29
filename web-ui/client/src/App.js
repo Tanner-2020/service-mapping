@@ -25,22 +25,16 @@ function App() {
         console.log(err);
       }
       try {
-        // Commented out for testing purposes.
-        //const facility_res = await axios.get(process.env.REACT_APP_CONNPORT_FACILITY);
-        //setFacilityServ(facility_res.data);
-        //setFacilityList(facility_res.data);
-        setFacilityServ([]);
-        setFacilityList([]);
+        const facility_res = await axios.get(process.env.REACT_APP_CONNPORT_FACILITY);
+        setFacilityServ(facility_res.data);
+        setFacilityList(facility_res.data);
       } catch(err) {
         console.log(err);
       }
       try {
-        // Commented out for testing purposes.
-        //const city_res = await axios.get(process.env.REACT_APP_CONNPORT_CITY);
-        //setCityServ(city_res.data);
-        //setCityList(city_res.data);
-        setCityServ([]);
-        setCityList([]);
+        const city_res = await axios.get(process.env.REACT_APP_CONNPORT_CITY);
+        setCityServ(city_res.data);
+        setCityList(city_res.data);
       } catch(err) {
         console.log(err);
       }
@@ -66,34 +60,34 @@ function App() {
               </div>
               <div id='Results'>
                   {zipList.map(zip=>(
-                      <div className='Result-item' key={zip.zip_code}>
-                          <h6 className='Headline'>{zip.zip_code}</h6>
-                          <p className='Primary'><b>Primary:</b> {zip.primary_serv}</p>
-                          <p className='Secondary'><b>Secondary:</b> {zip.secondary_serv}</p>
-                          <p className='Tertiary'><b>Tertiary:</b> {zip.tertiary_serv}</p>
-                          <a className='DataToggle'>Show More</a>
-                      </div>
+                    <div className='Result-item' key={zip.zip_code}>
+                      <h6 className='Headline'>{zip.zip_code}</h6>
+                      <p className='Primary'><b>Primary:</b> {zip.primary_serv}</p>
+                      <p className='Secondary'><b>Secondary:</b> {zip.secondary_serv}</p>
+                      <p className='Tertiary'><b>Tertiary:</b> {zip.tertiary_serv}</p>
+                      <a className='DataToggle'>Show More</a>
+                    </div>
                   ))}
-                  {/* {facilityList.map(facility=>(
-                      <div className='Result-item' key={facility.facility_name}>
-                          <h6 className='Headline'>{facility.facility_name}</h6>
-                          <p>{facility.zip_code}</p>
-                          <p className='Primary'><b>Primary:</b> {zip.primary_serv}</p>
-                          <p className='Secondary'><b>Secondary:</b> {zip.secondary_serv}</p>
-                          <p className='Tertiary'><b>Tertiary:</b> {zip.tertiary_serv}</p>
-                          <a className='DataToggle'>Show More</a>
-                      </div>
+                  {facilityList.map(facility=>(
+                    <div className='Result-item' key={facility.facility_name}>
+                      <h6 className='Headline'>{facility.facility_name}</h6>
+                      <p>{facility.zip_code}</p>
+                      <p className='Primary'><b>Primary:</b> {facility.primary_serv}</p>
+                      <p className='Secondary'><b>Secondary:</b> {facility.secondary_serv}</p>
+                      <p className='Tertiary'><b>Tertiary:</b> {facility.tertiary_serv}</p>
+                      <a className='DataToggle'>Show More</a>
+                    </div>
                   ))}
                   {cityList.map(city=>(
-                      <div className='Result-item' key={city.zip_code}>
-                          <h6 className='Headline'>{city.city_name}</h6>
-                          <p>{city.zip_code}</p>
-                          <p className='Primary'><b>Primary:</b> {zip.primary_serv}</p>
-                          <p className='Secondary'><b>Secondary:</b> {zip.secondary_serv}</p>
-                          <p className='Tertiary'><b>Tertiary:</b> {zip.tertiary_serv}</p>
-                          <a className='DataToggle'>Show More</a>
-                      </div>
-                  ))} */}
+                    <div className='Result-item' key={city.zip_code}>
+                      <h6 className='Headline'>{city.city}</h6>
+                      <p>{city.zip_code}</p>
+                      <p className='Primary'><b>Primary:</b> {city.primary_serv}</p>
+                      <p className='Secondary'><b>Secondary:</b> {city.secondary_serv}</p>
+                      <p className='Tertiary'><b>Tertiary:</b> {city.tertiary_serv}</p>
+                      <a className='DataToggle'>Show More</a>
+                    </div>
+                  ))}
               </div>
             </div>
           </div>
@@ -104,10 +98,9 @@ function App() {
 
   function updateLists (search_term, zip_data, facility_data, city_data) {
     var results = getSearchResults(search_term, zip_data, facility_data, city_data);
-    console.log(results)
     setZipList(results[0]);
-    //setFacilityList(results[1]);
-    //setCityList(results[2]);
+    setFacilityList(results[1]);
+    setCityList(results[2]);
   }
 }
 

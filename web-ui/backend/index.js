@@ -25,7 +25,7 @@ app.get("/zip", (req, res) => {
 })
 
 app.get("/facility", (req, res) => {
-    const q = "SELECT * FROM facility_locations LEFT JOIN servicer_rankings ON facility_locations.zip_code = servicer_rankings.zip_code"
+    const q = "SELECT * FROM facility_locations INNER JOIN servicer_rankings ON facility_locations.zip_code = servicer_rankings.zip_code"
     db.query(q, (err, data) => {
         if(err) return res.json(err)
         return res.json(data)
@@ -33,7 +33,7 @@ app.get("/facility", (req, res) => {
 })
 
 app.get("/city", (req, res) => {
-    const q = "SELECT * FROM location_zips LEFT JOIN servicer_rankings ON location_zips.zip_code = servicer_rankings.zip_code"
+    const q = "SELECT * FROM location_zips INNER JOIN servicer_rankings ON location_zips.zip_code = servicer_rankings.zip_code"
     db.query(q, (err, data) => {
         if(err) return res.json(err)
         return res.json(data)
